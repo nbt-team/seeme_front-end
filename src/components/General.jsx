@@ -1,24 +1,25 @@
-import React, {useState, useRef} from 'react'
+import React, { useState, useRef } from 'react'
+import { Link } from "react-router-dom"
 
-const Main = () => {
+const General = () => {
   const [hostLive, setHostLive] = useState(false)
   const hostLiveCB = useRef(null)
   const connectLiveCB = useRef(null)
   const checkForSelected = () => {
-    if(hostLiveCB.current.checked) {
+    if (hostLiveCB.current.checked) {
       setHostLive(true)
     } else if (connectLiveCB.current.checked) {
       setHostLive(false)
     }
   }
-  
+
   let style
   if (!hostLive) {
-    style = {gridColumn: '1/3'}
+    style = { gridColumn: '1/3' }
   } else {
     style = {}
   }
-
+  let chatId = '82378d238jdhd2'
   return (
     <main>
       <h1>Welcome to</h1>
@@ -27,27 +28,31 @@ const Main = () => {
       <div className="checkboxes">
         <div>
           <label for="hostLive">Host your live</label>
-          <input onChange={checkForSelected} ref={hostLiveCB} type="radio" name="type" id="hostLive"/>
+          <input onChange={checkForSelected} ref={hostLiveCB} type="radio" name="type" id="hostLive" />
         </div>
         <div>
           <label for="connectLive">Connect to live</label>
-          <input onChange={checkForSelected} ref={connectLiveCB} type="radio" name="type" id="connectLive"/>
+          <input onChange={checkForSelected} ref={connectLiveCB} type="radio" name="type" id="connectLive" />
         </div>
       </div>
       <div className="inputs">
         <input type="text" placeholder='Your nickname' />
-        { hostLive &&
-          <input id='url' type="text" value={'url'} />
+        {hostLive &&
+          <input id='url' type="text" value={chatId} />
         }
-        </div>
+      </div>
       <div className="buttons">
-        <button id='startBtn' style={style}>Start chat</button>
-        { hostLive &&
-          <button id='connectBtn'>Connect</button>
+        {hostLive &&
+          <Link to='/chat'>
+            <button id='startBtn'>Start chat</button>
+          </Link>
         }
+        <Link to={`/chat/${chatId}`} style={style}>
+          <button id='connectBtn'>Connect</button>
+        </Link>
       </div>
     </main>
   )
 }
 
-export default Main
+export default General

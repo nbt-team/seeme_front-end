@@ -36,7 +36,6 @@ header {
       }
       a:hover {
         color: red;
-        transition: all 0.5s;
       }
     }
   }
@@ -80,8 +79,10 @@ main {
     width: 30%;
     margin: 0 auto;
     gap: 15px;
-    #startBtn {
-      // justify-self: right;
+    a {
+      display: grid;
+      text-decoration: none;
+      width: 100%;
     }
   }
 }
