@@ -43,9 +43,9 @@ const General = () => {
         </div>
         <div className="inputs">
           <input type="text" placeholder='Your nickname' />
-          {hostLive &&
-            <input id='url' type="text" value={chatId} />
-          }
+          {/* {hostLive && */}
+            <input id='url' type="text" value={hostLive ? chatId : ''} placeholder='Enter stream URL' />
+          {/* } */}
         </div>
         <div className="buttons">
           {hostLive &&
