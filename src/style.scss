@@ -1,6 +1,7 @@
 *{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+$accent: rgb(59, 100, 77);
 
 @media(max-width: 768px) {
   header {
@@ -131,6 +132,25 @@ main {
   justify-items: center;
   justify-content: center;
   display: grid;
+  
+  .wrapperLive {
+    display: grid;
+    grid-template-rows: auto 50px;
+    gap: 10px;
+    justify-self: center;
+    width: 100vw;
+    .urlForLive {
+      justify-self: left;
+      height: 30px;
+    }
+    .video {
+      background-color: black;
+    }
+    input {
+      width: 150px;
+      margin-left: 50px; 
+    }
+  }
   .wrapper {
     justify-self: center;
     width: 35vw;
@@ -232,6 +252,54 @@ main {
       text-decoration: none;
       width: 100%;
     }
+
+    button{
+    display: inline-block;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    background-color: $accent;
+    padding: 15px 45px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+    outline: none;
+    transition: background-color .1s ease;
+    cursor: pointer;
+    &::after{
+        transition: background-color .2s ease;
+        position: absolute;
+        content: '';
+        height: 4px;
+        bottom: 0;
+        width: 100%;
+        background-color: darken($accent, 50%);
+        opacity: .18;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        left: 0;
+      }
+    &:focus, &:hover{
+        text-decoration: none;
+        color: #fff;
+      }
+    &:hover{
+        background-color: lighten($accent, 5%);
+        &::after {
+            opacity: .22;}
+          }
+    &:active{
+      background-color: darken($accent, 5%);
+      &::after{
+          opacity: .32;
+        }
+    }
+}
+
   }
 }
 

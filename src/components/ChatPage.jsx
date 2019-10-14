@@ -3,10 +3,12 @@ import React from 'react'
 const ChatPage = () => {
   return (
     <main>
-      <div className="video">
-        video
+      <div className="wrapperLive">
+        <div className="video">
+          video
       </div>
-      <input type="text" value='url'/>
+        <input className='urlForLive' type="text" value='url' />
+      </div>
     </main>
   )
 }
