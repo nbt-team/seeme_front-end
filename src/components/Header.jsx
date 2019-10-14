@@ -1,18 +1,18 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import logo from '../static/logo.svg'
 import menu from '../static/menu.svg'
 
 const Header = () => {
   const menuItems = useRef(null)
-  let isClicked = false
-  let menuItemsStyle
+  const [isClicked, setIsClicked] = useState(false)
+  const [menuItemsStyle, setMenuItemsStyle] = useState(undefined)
   
   const menuClick = () => {
-    isClicked ? isClicked = false : isClicked = true
+    isClicked ? setIsClicked(false) : setIsClicked(true)
 
-    isClicked
-    ? menuItemsStyle = { display: 'block' }
-    : menuItemsStyle = { display: 'none' }
+    !isClicked
+    ? setMenuItemsStyle({ display: 'block' })
+    : setMenuItemsStyle({ display: 'none' })
   }
   return (
     <header>

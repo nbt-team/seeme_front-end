@@ -2,7 +2,7 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-@media(max-width: 576px) {
+@media(max-width: 768px) {
   header {
     .wrapper {
       .menuIcon {
@@ -12,6 +12,67 @@
         display: none;
         text-align: right !important;
         grid-column: 1/3;
+      }
+    }
+  }
+  main {
+    .wrapper {
+      width: 90vw !important;
+      .checkboxes {
+        input {
+          height: 100%  !important;
+          width: 100% !important;
+          margin: 0;
+        }
+      }
+      .buttons {
+        button {
+          grid-column: 1/3;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+
+
+@media(max-width: 992px) {
+  main {
+    .wrapper {
+      width: 75vw !important;
+      .checkboxes {
+        input {
+          height: 100%  !important;
+          width: 100% !important;
+          margin: 0;
+        }
+      }
+      .buttons {
+        button {
+          grid-column: 1/3;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 1200px) {
+  main {
+    .wrapper {
+      width: 75vw !important;
+      .checkboxes {
+        input {
+          height: 100%  !important;
+          width: 100% !important;
+          margin: 0;
+        }
+      }
+      .buttons {
+        button {
+          grid-column: 1/3;
+          height: 30px;
+        }
       }
     }
   }
@@ -69,26 +130,93 @@ main {
   background-color: rgb(161, 202, 179);
   justify-items: center;
   justify-content: center;
+  display: grid;
+  .wrapper {
+    justify-self: center;
+    width: 35vw;
+  }
   h1 {
     margin: 0;
   }
   .checkboxes {
-    width: 30%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
     margin: 10px auto;
+    /* Customize the label (the container) */
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default radio button */
+    .container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+      background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+      top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+    } 
     div {
       display: grid;
       grid-template-columns: auto auto;
     }
-    input {
-      width: 3px;
-    }
   }
   .inputs {
     margin: 20px auto;
-    width: 30%;
+    width: 100%;
     display: grid;
     grid-template-columns: 100%;
     gap: 15px;
@@ -96,7 +224,7 @@ main {
   .buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 30%;
+    width: 100%;
     margin: 0 auto;
     gap: 15px;
     a {

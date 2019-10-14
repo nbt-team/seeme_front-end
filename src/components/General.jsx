@@ -22,34 +22,41 @@ const General = () => {
   let chatId = '82378d238jdhd2'
   return (
     <main>
-      <h1>Welcome to</h1>
-      <h1>See Me</h1>
-      {/* <button onClick={func}>Check</button> */}
-      <div className="checkboxes">
-        <div>
-          <label for="hostLive">Host your live</label>
-          <input onChange={checkForSelected} ref={hostLiveCB} type="radio" name="type" id="hostLive" />
+      <div className="wrapper">
+        <h1>Welcome to</h1>
+        <h1>See Me</h1>
+        {/* <button onClick={func}>Check</button> */}
+        <div className="checkboxes">
+          <div>
+
+          <label class="container">Host your live
+              <input onChange={checkForSelected} ref={hostLiveCB} type="radio" name="type" id="hostLive"/>
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div>
+            <label class="container">Connect to live
+              <input onChange={checkForSelected} ref={connectLiveCB} type="radio" name="type" id="connectLive" />
+              <span class="checkmark"></span>
+            </label>
+          </div>
         </div>
-        <div>
-          <label for="connectLive">Connect to live</label>
-          <input onChange={checkForSelected} ref={connectLiveCB} type="radio" name="type" id="connectLive" />
+        <div className="inputs">
+          <input type="text" placeholder='Your nickname' />
+          {hostLive &&
+            <input id='url' type="text" value={chatId} />
+          }
         </div>
-      </div>
-      <div className="inputs">
-        <input type="text" placeholder='Your nickname' />
-        {hostLive &&
-          <input id='url' type="text" value={chatId} />
-        }
-      </div>
-      <div className="buttons">
-        {hostLive &&
-          <Link to='/chat'>
-            <button id='startBtn'>Start chat</button>
+        <div className="buttons">
+          {hostLive &&
+            <Link to='/chat'>
+              <button id='startBtn'>Start chat</button>
+            </Link>
+          }
+          <Link to={`/chat/${chatId}`} style={style}>
+            <button id='connectBtn'>Connect</button>
           </Link>
-        }
-        <Link to={`/chat/${chatId}`} style={style}>
-          <button id='connectBtn'>Connect</button>
-        </Link>
+        </div>
       </div>
     </main>
   )
