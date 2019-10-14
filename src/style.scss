@@ -2,6 +2,21 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+@media(max-width: 576px) {
+  header {
+    .wrapper {
+      .menuIcon {
+        display: block !important;
+      }
+      .menu {
+        display: none;
+        text-align: right !important;
+        grid-column: 1/3;
+      }
+    }
+  }
+}
+
 body {
   margin: 0;
 }
@@ -24,6 +39,11 @@ header {
       height: 100%;
       justify-self: left;
       align-self: center;
+    }
+    .menuIcon {
+      display: none;
+      justify-self: right;
+      height: 65%;
     }
     .menu {
       text-align: center;
