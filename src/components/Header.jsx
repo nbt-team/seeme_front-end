@@ -19,8 +19,8 @@ const Header = () => {
       <div className="wrapper">
         <img src={logo} alt="" />
         <img onClick={() => { menuClick() }} className='menuIcon' src={menu} alt="" />
-        <div ref={menuItems} style={menuItemsStyle} className="menu">
-          <a href='/'>item</a>
+        <div ref={menuItems} style={menuItemsStyle} className="menu cl-effect-5">
+          <a href='/'><span data-hover='item'>item</span></a>
         </div>
       </div>
     </header>

@@ -20,41 +20,39 @@ const General = () => {
     style = {}
   }
   let chatId = '82378d238jdhd2'
+
   return (
     <main>
       <div className="wrapper">
         <h1>Welcome to</h1>
         <h1>See Me</h1>
-        {/* <button onClick={func}>Check</button> */}
         <div className="checkboxes">
           <div>
 
-          <label class="container">Host your live
-              <input onChange={checkForSelected} ref={hostLiveCB} type="radio" name="type" id="hostLive"/>
+            <label class="container">Host your live
+              <input onChange={checkForSelected} ref={hostLiveCB} type="radio" name="type" id="hostLive" />
               <span class="checkmark"></span>
             </label>
           </div>
           <div>
             <label class="container">Connect to live
-              <input onChange={checkForSelected} ref={connectLiveCB} type="radio" name="type" id="connectLive" />
+              <input defaultChecked onChange={checkForSelected} ref={connectLiveCB} type="radio" name="type" id="connectLive" />
               <span class="checkmark"></span>
             </label>
           </div>
         </div>
         <div className="inputs">
           <input type="text" placeholder='Your nickname' />
-          {/* {hostLive && */}
-            <input id='url' type="text" value={hostLive ? chatId : ''} placeholder='Enter stream URL' />
-          {/* } */}
+          <input id='url' type="text" value={hostLive ? chatId : ''} placeholder='Enter stream URL' />
         </div>
         <div className="buttons">
           {hostLive &&
             <Link to='/chat'>
-              <button id='startBtn'>Start chat</button>
+              <button class="button button--aylen button--border-thick button--inverted button--text-upper button--size-s">Start chat</button>
             </Link>
           }
           <Link to={`/chat/${chatId}`} style={style}>
-            <button id='connectBtn'>Connect</button>
+            <button class="button button--aylen button--border-thick button--inverted button--text-upper button--size-s">Connect</button>
           </Link>
         </div>
       </div>
