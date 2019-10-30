@@ -13,6 +13,8 @@ const General = () => {
 
   const inputEl1 = useRef(null)
   const inputEl2 = useRef(null)
+  const spanEl1 = useRef(null)
+  const spanEl2 = useRef(null)
 
 
   const checkForSelected = () => {
@@ -40,11 +42,25 @@ const General = () => {
 
   if (inputEl1IsFocused) {
     inputEl1.current.style.borderColor = '#da6484' 
+    spanEl1.current.style.opacity = '100%'
   }
 
   if (inputEl2IsFocused) {
     inputEl2.current.style.borderColor = '#da6484' 
+    spanEl2.current.style.opacity = '100%'
   }
+  // if (inputEl1IsFocused) {
+  //   spanEl1.current.style.opacity = '0%'
+  //   debugger
+  // }
+  // else if (!inputEl1IsFocused) {
+  //   debugger
+  //   spanEl1.current.style.opacity = '100%'
+  // } 
+  
+  // if (!inputEl2IsFocused) {
+  //   inputEl2.current.style.borderColor = 'white' 
+  // }
 
   return (
     <main>
@@ -53,10 +69,10 @@ const General = () => {
         <h1>See Me</h1>
         <CheckBoxes checkForSelected={checkForSelected} hostLiveCB={hostLiveCB} connectLiveCB={connectLiveCB} />
         <div onClick={inputIsAvtive} className="inputs">
-          { inputEl1IsFocused && <span>Your Nickname</span> }
-          <input onFocus={() => {setInputEl1(true)}} type="text" ref={inputEl1} className='inputInGeneralPage' placeholder='Your nickname' />
-          { inputEl2IsFocused && <span>Stream URL</span> }
-          <input onFocus={() => {setInputEl2(true)}} id='url' ref={inputEl2} className='inputInGeneralPage' type="text" value={hostLive ? chatId : ''} placeholder='Enter stream URL' />
+          <span ref={spanEl1}>Your Nickname</span>
+          <input onBlur={() => {setInputEl1(false);spanEl1.current.style.opacity = '0%';inputEl1.current.style.borderColor = 'white'}} onFocus={() => {setInputEl1(true)}} type="text" ref={inputEl1} className='inputInGeneralPage' placeholder='Your nickname' />
+          <span ref={spanEl2}>Stream URL</span>
+          <input onBlur={() => {setInputEl2(false);spanEl2.current.style.opacity = '0%';inputEl2.current.style.borderColor = 'white'}} onFocus={() => {setInputEl2(true)}} id='url' ref={inputEl2} className='inputInGeneralPage' type="text" value={hostLive ? chatId : ''} placeholder='Enter stream URL' />
         </div>
         <Buttons hostLive={hostLive} chatId={chatId} style={style} />
       </div>
